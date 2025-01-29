@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samiq</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333333;
+            --bg-color: #ecf0f1;
+            --card-bg-color: #ffffff;
+            --header-text-color: #ffffff;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--primary-color);
+            color: var(--header-text-color);
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: var(--accent-color) 3px solid;
+			padding-bottom: 30px;
+        }
+        header a {
+            color: var(--header-text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+		
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        header a:hover {
+            color: var(--bg-color);
+            font-weight: bold;
+			color: #e74c3c;
+        }
+        #showcase {
+            min-height: 400px;
+            background: url('/placeholder.svg?height=400&width=1200') no-repeat center center/cover;
+            text-align: center;
+            color: var(--header-text-color);
+        }
+        #showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+			color: #e74c3c;
+        }
+        #showcase p {
+            font-size: 20px;
+			color: #e74c3c;
+        }
+        section {
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+		#about h2{
+			color: #e74c3c;
+		}
+		#achievements h2{
+			color: #e74c3c;
+		}
+		#projects h2{
+			color: #e74c3c;
+		}
+		#skills h2{
+			color: #e74c3c;
+		}
+		#education h2{
+			color: #e74c3c;
+		}
+		#contact h2{
+			color: #e74c3c;
+		}
+        #about, #achievements, #projects, #skills, #education, #contact {
+            background: var(--card-bg-color);
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        #achievements ul, #projects ul, #skills ul, #education ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #achievements li, #projects li, #skills li, #education li {
+            background: var(--bg-color);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 3px;
+        }
+		#achievements ul :hover{
+	    background-color: #f76656;
+		font-weight: bold;
+
+		}
+        .project {
+            border-bottom: 1px solid var(--bg-color);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+		#projects ul li:hover{
+			background-color: #f76656;
+			font-weight: bold;
+		}
+        .project:last-child {
+            border-bottom: none;
+        }
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        .skill-category h3 {
+            margin-bottom: 10px;
+            color: black(--secondary-color);
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+           
+        }
+        .skill-item {
+            background: #f39c12;
+            color: var(--header-text-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--bg-color);
+            border-radius: 4px;
+        }
+        form button {
+            background: var(--secondary-color);
+            color: var(--header-text-color);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: var(--primary-color);
+        }
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: var(--header-text-color);
+            background-color: var(--primary-color);
+            text-align: center;
+        }
+		.footer {
+            background-color: #2c3e50; /* Dark background for contrast */
+            color: #ecf0f1; /* Light text color */
+            text-align: center;
+            padding: 50px 50px;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer ul li {
+            display: inline;
+        }
+
+        .footer ul li a {
+            color: #ecf0f1; /* Light text color */
+            text-decoration: none;
+            font-size: 17px;
+            transition: color 0.3s;
+        }
+
+        .footer ul li a:hover {
+            color: #e74c3c; /* Highlight color on hover */
+        }
+
+        .footer b {
+            font-size: 16px;
+        }
+
+        /* Media query for responsive adjustments */
+        @media(max-width: 768px) {
+            .footer ul {
+                flex-direction: column; /* Stack the links on smaller screens */
+            }
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 3px solid #e74c3c;
+        }
+        @media(max-width: 768px) {
+            header #branding,
+            header nav,
+            header nav li {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+            header {
+                padding-bottom: 20px;
+            }
+            #showcase h1 {
+                margin-top: 40px;
+                font-size: 35px;
+            }
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* New transition styles */
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        header nav ul li {
+            position: relative;
+            overflow: hidden;
+        }
+
+        header nav ul li::after {
+          
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        header nav ul li:hover::after {
+            transform: translateX(0);
+        }
+
+        .skill-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-image {
+            transition: transform 0.5s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        #showcase {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 62, 80, 0.7);
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        #showcase:hover::before {
+            transform: translateY(0);
+        }
+
+        #showcase h1, #showcase p {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Syed Samiq Abbas Bukhari</span> Student Portfolio</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1 class="float-animation">Welcome to My Student Portfolio</h1>
+            <p class="float-animation">Future Data Scientist | Class of 2028</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="about" class="fade-in">
+            <h2>About Me</h2>
+            <img src="samiq.jpg" alt="samiq" class="profile-image">
+            <p>Hello! I'm <b style="color: #e74c3c;"><i>Syed Samiq Abbas Bukhari</i></b>, a passionate student pursuing a degree in <b> Data Sciences</b> at <b>Punjab University (PUCIT) Lahore</b> , Pakistan. I'm dedicated to learning and applying cutting-edge technologies to solve real-world problems. My interests include artificial intelligence, web development, and data science.</p>
+            <p>As a first-year university student, I am focused on building a strong foundation in programming, data analysis, and problem-solving skills. I'm eager to explore core concepts in data science while experimenting with personal projects that challenge me to think critically and creatively. I enjoy learning from peers, professors, and the tech community, constantly pushing myself to grow academically and professionally.</p>
+            <p>Beyond academics, I love staying connected with the ever-evolving tech landscape. Whether it's participating in workshops, attending tech talks, or brainstorming ideas for future projects, I'm always on the lookout for ways to expand my knowledge. My journey in data science is just beginning, and I'm excited to embrace every opportunity to contribute and innovate in this dynamic field.</p>
+        </section>
+
+        <section id="achievements" class="fade-in">
+            <h2>Achievements</h2>
+            <ul>
+                <li class="slide-in-left">Dean's List - Fall 2023, Spring 2024</li>
+                <li class="slide-in-right">First Place - University Hackathon 2023</li>
+                <li class="slide-in-left">Recipient of the STEM Excellence Scholarship</li>
+                <li class="slide-in-right">Published research paper in the Journal of Undergraduate Research</li>
+                <li class="slide-in-left">Certified in Python Programming - Coursera</li>
+                <li class="slide-in-right">Selected for Google's Computer Science Summer Institute</li>
+                <li class="slide-in-left">Awarded "Best Freshman Project" in the Annual CS Showcase</li>
+                <li class="slide-in-right">Volunteer Tech Mentor at local high schools</li>
+            </ul>
+        </section>
+
+        <section id="projects" class="fade-in">
+            <h2>Projects</h2>
+            <div class="project scale-in">
+                <h3>AI-Powered Chess Tutor</h3>
+                <p>Developed a machine learning model to analyze chess games and provide personalized improvement suggestions.</p>
+                <ul>
+                    <li>Implemented using Python and TensorFlow</li>
+                    <li>Achieved 85% accuracy in predicting optimal moves</li>
+                    <li>Integrated with a user-friendly web interface using React</li>
+                </ul>
+            </div>
+            <div class="project scale-in">
+                <h3>Eco-Track: Environmental Monitoring App</h3>
+                <p>Created a mobile app that allows users to track and reduce their carbon footprint through daily activities.</p>
+                <ul>
+                    <li>Developed for iOS and Android using React Native</li>
+                    <li>Integrated with external APIs for real-time environmental data</li>
+                    <li>Implemented gamification features to encourage user engagement</li>
+                </ul>
+            </div>
+            <div class="project scale-in">
+                <h3>Student Resource Sharing Platform</h3>
+                <p>Built a web application for students to share and access study materials, fostering collaborative learning.</p>
+                <ul>
+                    <li>Utilized Node.js and Express for the backend</li>
+                    <li>Implemented user authentication and file upload functionality</li>
+                    <li>Designed a responsive frontend using HTML, CSS, and JavaScript</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="fade-in">
+            <h2>Skills</h2>
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">SQL</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Web Technologies</h3>
+                <div class="skill-list">
+                    <span class="skill-item">HTML5</span>
+                    <span class="skill-item">CSS3</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">Node.js</span>
+                    <span class="skill-item">Express</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Technologies</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">AWS</span>
+                    <span class="skill-item">TensorFlow</span>
+                    <span class="skill-item">MongoDB</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Problem Solving</span>
+                    <span class="skill-item">Team Collaboration</span>
+                    <span class="skill-item">Public Speaking</span>
+                    <span class="skill-item">Project Management</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="fade-in">
+            <h2>Education</h2>
+            <ul>
+                <li class="slide-in-left">
+                    <h3> Pursuing Bachelor of Science in Data Science</h3>
+                    <p>Punjab University (PUCIT) Lahore, Expected Graduation: August 2028</p>
+                    <p>Current GPA: 3.8/4.0</p>
+                    <p>Relevant Coursework:</p>
+                    <ul>
+                        <li>Data Structures and Algorithms</li>
+                        <li>Object-Oriented Programming (OOPs)</li>
+                        <li>Database Management Systems</li>
+                        <li>Artificial Intelligence</li>
+                        <li>Web Development</li>
+                        <li>Computer Networks</li>
+                    </ul>
+                </li>
+                <li class="slide-in-right">
+                    <h3>Early Education</h3>
+                    <p>I have done my Matriculation from <b>Divisional Model College (DMC) </b>Faisalabad. (2020-2021) </p>
+                    <p>I have done my Intermediate from <b>Punjab Group of Colleges (PGC) </b>Faisalabad.  (2022-2023)</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="contact" class="fade-in">
+            <h2>Contact Me</h2>
+            <form>
+                <div>
+                    <label for="name"><b>Name:</b></label>
+                    Syed Samiq Abbas Bukhari
+                </div>
+                <div>
+                    <label for="email"><b>Email:</b></label>
+                    <a href="samiqbukhari51214@gmail.com" class="__cf_email__" style="color: #e74c3c;">samiqbukhari51214@gmail.com</a>
+                </div>
+                <div>
+                    <label for="subject"><b>Contact:</b></label>
+                   <a href="0318-9669802" style="color: #e74c3c;">0318-9669802</a> 
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy;<b style="color: #e74c3c;"> 2024 Syed Samiq Abbas Bukhari </b> Student Portfolio. All rights reserved.</p>
+        <ul>
+            <li class="current"><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in and slide-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
